@@ -426,6 +426,7 @@ static int write_file_contents(pam_handle_t *pamh, const char *secret_filename,
   int fd = open(tmp_filename,
                 O_WRONLY|O_CREAT|O_NOFOLLOW|O_TRUNC|O_EXCL, 0400);
   if (fd < 0) {
+    free(tmp_filename);
     goto removal_failure;
   }
 
